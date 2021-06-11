@@ -1,4 +1,5 @@
-import { build, BuildOptions } from 'esbuild';
+import esbuild, { build, BuildOptions, BuildResult, Plugin } from 'esbuild';
+import htmlPlugin from '@chialab/esbuild-plugin-html';
 
 import {
   createHttpServer,
@@ -20,9 +21,14 @@ type Config = {
   exitListener?: boolean;
 };
 
+const defaultPlugins: Plugin[] = [
+  logger.buildSpinnerPlugin,
+  htmlPlugin({ esbuild })
+];
+
 export class Server {
   private http?: HttpServer;
-  private stopBuild?: () => void;
+  private build?: BuildResult;
   constructor(private config: Config) {}
 
   async start(): Promise<void> {
@@ -32,9 +38,11 @@ export class Server {
     const { host, port } = getListenData(this.http);
     logger.info(`Listening on ${host}:${port}`);
 
-    const data = await build({
+    this.build = await build({
       ...this.config.build,
       write: true, // browser-sync reads the files from disk
+      incremental: true, // speeds up builds
+      plugins: [...(this.config.build.plugins ?? []), ...defaultPlugins],
       watch: {
         onRebuild: (error, result) => {
           if (result) {
@@ -51,7 +59,6 @@ export class Server {
         }
       }
     });
-    this.stopBuild = data.stop;
 
     if (this.config.exitListener ?? true) {
       this.setupExitListener();
@@ -59,8 +66,8 @@ export class Server {
   }
 
   async stop(): Promise<void> {
-    this.stopBuild?.();
-    this.stopBuild = undefined;
+    this.build?.stop?.();
+    this.build = undefined;
 
     if (this.http) {
       await closeHttpServer(this.http);

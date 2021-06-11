@@ -3,6 +3,9 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "dist",
+    "module": "es6",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "rootDir": "src",
     "outDir": "dist",
