@@ -1,6 +1,6 @@
 {
   "name": "@hugmanrique/esbuild-http-server",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Serves the output of esbuild, refreshing the browser on rebuilds",
   "license": "MIT",
   "repository": {
