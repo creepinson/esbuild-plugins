@@ -1,6 +1,6 @@
 # esbuild-http-server
 
-Serves the output of esbuild, refreshing the browser on rebuilds
+Serves the output of esbuild, refreshing the browser on rebuilds.
 
 ## License
 
