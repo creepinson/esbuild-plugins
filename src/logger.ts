@@ -9,7 +9,7 @@ function createLogger(prefix: string): Logger {
 }
 
 export default {
-  info: createLogger(chalk.bgBlue.bold('info')),
+  info: createLogger(chalk.bgHex('#3d33e5').bold('info')),
   warn: createLogger(chalk.bgYellow.bold('warn')),
   error: createLogger(chalk.bgRedBright.bold('error'))
 };
