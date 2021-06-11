@@ -17,6 +17,8 @@ const server = new Server({
 await server.start();
 ```
 
+The current code is quite dirty and should be refactored to a [esbuild plugin](https://esbuild.github.io/plugins/#using-plugins).
+
 ## License
 
 [MIT](LICENSE) &copy; [Hugo Manrique](https://hugmanrique.me)
