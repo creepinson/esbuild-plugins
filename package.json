@@ -24,7 +24,6 @@
     },
     "devDependencies": {
         "@theoparis/eslint-config": "github:creepinson/eslint-config#update",
-        "@tsconfig/node16": "^1.0.1",
         "@types/browser-sync": "^2.26.2",
         "@types/node": "^16.0.1",
         "esbuild": "^0.12.15",

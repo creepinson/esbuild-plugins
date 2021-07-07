@@ -1,15 +1,18 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
-  "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "dist",
-    "module": "es6",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "rootDir": "src",
-    "outDir": "dist"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+    "compilerOptions": {
+        "declaration": true,
+        "declarationDir": "dist",
+        "lib": ["es2020"],
+        "target": "es2020",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "module": "es6",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "rootDir": "src",
+        "outDir": "dist"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
 }

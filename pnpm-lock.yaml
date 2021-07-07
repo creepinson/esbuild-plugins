@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@theoparis/eslint-config': github:creepinson/eslint-config#update
-  '@tsconfig/node16': ^1.0.1
   '@types/browser-sync': ^2.26.2
   '@types/node': ^16.0.1
   browser-sync: ^2.27.4
@@ -20,7 +19,6 @@ dependencies:
 
 devDependencies:
   '@theoparis/eslint-config': github.com/creepinson/eslint-config/91bde97443e0e1acaedf060ac0d43840565cf9d1
-  '@tsconfig/node16': 1.0.1
   '@types/browser-sync': 2.26.2
   '@types/node': 16.0.1
   esbuild: 0.12.15
@@ -116,10 +114,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.11.1
-    dev: true
-
-  /@tsconfig/node16/1.0.1:
-    resolution: {integrity: sha512-FTgBI767POY/lKNDNbIzgAX6miIDBs6NTCbdlDb8TrWovHsSvaVIZDlTqym29C6UqhzwcJx4CYr+AlrMywA0cA==}
     dev: true
 
   /@types/browser-sync/2.26.2:
