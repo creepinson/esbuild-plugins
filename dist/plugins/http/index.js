@@ -1,5 +1,5 @@
-import { createHttpServer, closeHttpServer, getListenData } from "./http";
-import logger from "../../logger";
+import { createHttpServer, closeHttpServer, getListenData } from "./http.js";
+import logger from "../../logger.js";
 export class Server {
     constructor(config = {}) {
         this.config = config;

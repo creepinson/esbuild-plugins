@@ -6,8 +6,8 @@ import {
     HttpServer,
     closeHttpServer,
     getListenData
-} from "./http";
-import logger from "../../logger";
+} from "./http.js";
+import logger from "../../logger.js";
 
 type Config = {
     server?: HttpServerConfig;

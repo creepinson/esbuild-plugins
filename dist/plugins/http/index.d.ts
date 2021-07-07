@@ -1,5 +1,5 @@
 import { PluginBuild, Plugin } from "esbuild";
-import { HttpServerConfig } from "./http";
+import { HttpServerConfig } from "./http.js";
 declare type Config = {
     server?: HttpServerConfig;
     exitListener?: boolean;
