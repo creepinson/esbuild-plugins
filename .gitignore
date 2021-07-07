@@ -21,9 +21,6 @@ composer.lock
 *.swo
 *.iml
 
-# Build output
-dist
-
 # Dependencies
 node_modules
 test/node_modules
