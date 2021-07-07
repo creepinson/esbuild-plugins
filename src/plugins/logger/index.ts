@@ -2,13 +2,14 @@ import { BuildResult, Plugin, PluginBuild } from "esbuild";
 import chalk from "chalk";
 import ora from "ora";
 
+// TODO: @firenodes/core logger
 type Logger = (message: string | Error) => void;
 
-function createLogger(prefix: string): Logger {
-    return (message) => {
+const createLogger =
+    (prefix: string): Logger =>
+    (message) => {
         console.log(`${prefix} ${message}`);
     };
-}
 
 const buildSpinner = ora({
     color: "magenta"
