@@ -9,23 +9,24 @@ import {
 } from "./http.js";
 import logger from "../../logger.js";
 
-type Config = {
+export type HttpConfig = {
     server?: HttpServerConfig;
     exitListener?: boolean;
 };
-export class Server implements Plugin {
-    readonly name = "http";
-    private http?: HttpServer;
 
-    setup(build: PluginBuild): void {
+export const httpServerPlugin = (config: HttpConfig): Plugin => ({
+    name: "http",
+    setup: (build: PluginBuild) => {
+        let http: HttpServer | undefined;
+
         const outDir = build.initialOptions.outdir;
         if (!outDir)
             throw new Error(
                 "The esbuild http plugin requires an outdir to be set."
             );
-        this.http = createHttpServer(this.config.server || {}, outDir);
+        http = createHttpServer(config.server || {}, outDir);
 
-        const { host, port } = getListenData(this.http);
+        const { host, port } = getListenData(http);
         logger.info(`Listening on ${host}:${port}`);
 
         build.onEnd((result) => {
@@ -39,28 +40,24 @@ export class Server implements Plugin {
                 result.errors.forEach((e) =>
                     logger.error(`esbuild error: ${e.text}: `)
                 );
-            } else if (this.http) {
-                this.http.reload();
+            } else if (http) {
+                http.reload();
             }
         });
 
-        if (this.config.exitListener ?? true) {
-            this.setupExitListener();
+        const stop = async (): Promise<void> => {
+            if (http) {
+                await closeHttpServer(http);
+                http = undefined;
+            }
+        };
+        const setupExitListener = () =>
+            process.on("SIGTERM", () => {
+                stop(); // best effort
+            });
+
+        if (config.exitListener ?? true) {
+            setupExitListener();
         }
     }
-
-    constructor(public readonly config: Config = {}) {}
-
-    async stop(): Promise<void> {
-        if (this.http) {
-            await closeHttpServer(this.http);
-            this.http = undefined;
-        }
-    }
-
-    private setupExitListener() {
-        process.on("SIGTERM", () => {
-            this.stop(); // best effort
-        });
-    }
-}
+});
