@@ -20,9 +20,12 @@
     "scripts": {
         "build": "tsc",
         "lint": "eslint . --fix",
-        "prepublishOnly": "pnpm run lint && pnpm run build"
+        "prepublishOnly": "pnpm run lint && pnpm run build && pnpm run test"
     },
     "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/preset-env": "^7.14.7",
+        "@babel/preset-typescript": "^7.14.5",
         "@theoparis/eslint-config": "github:creepinson/eslint-config#update",
         "@types/browser-sync": "^2.26.2",
         "@types/node": "^16.0.1",

@@ -7,7 +7,7 @@ import {
     closeHttpServer,
     getListenData
 } from "./http.js";
-import logger from "../../logger.js";
+import { basicLogger } from "../../logger.js";
 
 export type HttpConfig = {
     server?: HttpServerConfig;
@@ -17,6 +17,10 @@ export type HttpConfig = {
 export const httpServerPlugin = (config: HttpConfig): Plugin => ({
     name: "http",
     setup: (build: PluginBuild) => {
+        const logger = basicLogger({
+            base: console,
+            createPrefix: () => "Http Plugin"
+        });
         let http: HttpServer | undefined;
 
         const outDir = build.initialOptions.outdir;
@@ -30,19 +34,14 @@ export const httpServerPlugin = (config: HttpConfig): Plugin => ({
         logger.info(`Listening on ${host}:${port}`);
 
         build.onEnd((result) => {
-            if (result) {
-                for (const warning in result.warnings) {
-                    logger.warn(warning);
-                }
-            }
+            if (result)
+                for (const warning in result.warnings) logger.warn(warning);
 
-            if (result.errors) {
+            if (result.errors)
                 result.errors.forEach((e) =>
                     logger.error(`esbuild error: ${e.text}: `)
                 );
-            } else if (http) {
-                http.reload();
-            }
+            else if (http) http.reload();
         });
 
         const stop = async (): Promise<void> => {
@@ -56,8 +55,6 @@ export const httpServerPlugin = (config: HttpConfig): Plugin => ({
                 stop(); // best effort
             });
 
-        if (config.exitListener ?? true) {
-            setupExitListener();
-        }
+        if (config.exitListener ?? true) setupExitListener();
     }
 });
