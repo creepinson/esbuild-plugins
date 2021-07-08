@@ -1,16 +1,7 @@
-import { PluginBuild, Plugin } from "esbuild";
+import { Plugin } from "esbuild";
 import { HttpServerConfig } from "./http.js";
-declare type Config = {
+export declare type HttpConfig = {
     server?: HttpServerConfig;
     exitListener?: boolean;
 };
-export declare class Server implements Plugin {
-    readonly config: Config;
-    readonly name = "http";
-    private http?;
-    setup(build: PluginBuild): void;
-    constructor(config?: Config);
-    stop(): Promise<void>;
-    private setupExitListener;
-}
-export {};
+export declare const httpServerPlugin: (config: HttpConfig) => Plugin;
