@@ -3,8 +3,8 @@ lockfileVersion: 5.3
 specifiers:
   '@theoparis/eslint-config': github:creepinson/eslint-config#update
   '@tsconfig/node16': ^1.0.1
-  '@types/browser-sync': ^2.26.2
-  '@types/node': ^16.0.1
+  '@types/browser-sync': 2.26.2
+  '@types/node': 16.3.3
   browser-sync: ^2.27.4
   chalk: ^4.1.1
   esbuild: ^0.12.15
@@ -19,10 +19,10 @@ dependencies:
   ora: 5.4.1
 
 devDependencies:
-  '@theoparis/eslint-config': github.com/creepinson/eslint-config/91bde97443e0e1acaedf060ac0d43840565cf9d1
+  '@theoparis/eslint-config': github.com/creepinson/eslint-config/7032c8bc841a9423872e8ebdce942e61b7b700e3
   '@tsconfig/node16': 1.0.1
   '@types/browser-sync': 2.26.2
-  '@types/node': 16.0.1
+  '@types/node': 16.3.3
   esbuild: 0.12.15
   eslint: 7.30.0
   prettier: 2.3.2
@@ -126,7 +126,7 @@ packages:
     resolution: {integrity: sha512-IG8hyEIoK+lWLcXFiTo8m9RuN5/nWQVYNdSTtD/V2pxsVuP4XvmL4dcwufYrzw2IqRH+QEmCeCyyq4StJ8PpLw==}
     dependencies:
       '@types/micromatch': 2.3.31
-      '@types/node': 16.0.1
+      '@types/node': 16.3.3
       '@types/serve-static': 1.13.10
       chokidar: 2.1.8
     dev: true
@@ -145,8 +145,8 @@ packages:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: true
 
-  /@types/node/16.0.1:
-    resolution: {integrity: sha512-hBOx4SUlEPKwRi6PrXuTGw1z6lz0fjsibcWCM378YxsSu/6+C30L6CR49zIBKHiwNWCYIcOLjg4OHKZaFeLAug==}
+  /@types/node/16.3.3:
+    resolution: {integrity: sha512-8h7k1YgQKxKXWckzFCMfsIwn0Y61UK6tlD6y2lOb3hTOIMlK3t9/QwHOhc81TwU+RMf0As5fj7NPjroERCnejQ==}
     dev: true
 
   /@types/parse-glob/3.0.29:
@@ -157,7 +157,7 @@ packages:
     resolution: {integrity: sha512-nCkHGI4w7ZgAdNkrEu0bv+4xNV/XDqW+DydknebMOQwkpDGx8G+HTlj7R7ABI8i8nKxVw0wtKPi1D+lPOkh4YQ==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 16.0.1
+      '@types/node': 16.3.3
     dev: true
 
   /@typescript-eslint/eslint-plugin/4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff:
@@ -1237,6 +1237,14 @@ packages:
       has: 1.0.3
       jsx-ast-utils: 3.2.0
       language-tags: 1.0.5
+    dev: true
+
+  /eslint-plugin-prefer-arrow/1.2.3_eslint@7.30.0:
+    resolution: {integrity: sha512-J9I5PKCOJretVuiZRGvPQxCbllxGAV/viI20JO3LYblAodofBxyMnZAJ+WGeClHgANnSJberTNoFWWjrWKBuXQ==}
+    peerDependencies:
+      eslint: '>=2.0.0'
+    dependencies:
+      eslint: 7.30.0
     dev: true
 
   /eslint-plugin-prettier/3.4.0_0470f3bcd018a045da11d0bbb868d6c6:
@@ -3668,8 +3676,8 @@ packages:
     resolution: {integrity: sha1-AI4G2AlDIMNy28L47XagymyKxBk=}
     dev: false
 
-  github.com/creepinson/eslint-config/91bde97443e0e1acaedf060ac0d43840565cf9d1:
-    resolution: {tarball: https://codeload.github.com/creepinson/eslint-config/tar.gz/91bde97443e0e1acaedf060ac0d43840565cf9d1}
+  github.com/creepinson/eslint-config/7032c8bc841a9423872e8ebdce942e61b7b700e3:
+    resolution: {tarball: https://codeload.github.com/creepinson/eslint-config/tar.gz/7032c8bc841a9423872e8ebdce942e61b7b700e3}
     name: '@theoparis/eslint-config'
     version: 1.0.2
     dependencies:
@@ -3679,6 +3687,7 @@ packages:
       eslint-config-prettier: 8.3.0_eslint@7.30.0
       eslint-plugin-import: 2.23.4_eslint@7.30.0
       eslint-plugin-jsx-a11y: 6.4.1_eslint@7.30.0
+      eslint-plugin-prefer-arrow: 1.2.3_eslint@7.30.0
       eslint-plugin-prettier: 3.4.0_0470f3bcd018a045da11d0bbb868d6c6
       eslint-plugin-react: 7.24.0_eslint@7.30.0
       eslint-plugin-react-hooks: 4.2.0_eslint@7.30.0
