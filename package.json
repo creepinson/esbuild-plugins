@@ -35,7 +35,7 @@
     "dependencies": {
         "browser-sync": "^2.27.4",
         "chalk": "^4.1.1",
-        "ora": "^5.4.1"
+        "ora": "^6.0.0"
     },
     "peerDependencies": {
         "esbuild": "^0.12.15"
